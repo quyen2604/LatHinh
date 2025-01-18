@@ -58,4 +58,13 @@ public class Model {
             return null;
         }
     }
+    // Kiểm tra nếu trò chơi đã kết thúc (tất cả các cặp đã lật đúng)
+    public boolean isGameFinished() {
+        // Tổng số cặp bài đúng (tính số điểm tối đa)
+        int totalPairs = (rows * cols) / 2;
+        int maxScore = totalPairs * 10;  // Mỗi cặp đúng sẽ cộng 10 điểm
+
+        // Kiểm tra nếu điểm số hiện tại đã đạt tối đa
+        return this.score == maxScore;
+    }
 }

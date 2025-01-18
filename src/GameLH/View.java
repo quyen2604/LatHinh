@@ -49,4 +49,13 @@ public class View extends JFrame {
     public void hideButtonIcon(JButton button) {
         button.setIcon(new ImageIcon(getClass().getResource("/GameLH/Icon/icon000.jpg"))); // Hình mặc định
     }
+    // Hiển thị thông báo "You Win!" khi người chơi thắng
+    public void showWinMessage(int score) {
+        JOptionPane.showMessageDialog(this, "You Win! Congratulations!\nYour Score: " + score);
+    }
+
+    // Hiển thị thông báo "Game Over" khi hết thời gian
+    public void showGameOverMessage(int score) {
+        JOptionPane.showMessageDialog(this, "Game Over!\nYour Score: " + score);
+    }
 }
