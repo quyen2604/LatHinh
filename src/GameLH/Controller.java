@@ -49,6 +49,13 @@ public class Controller {
             if (model.board[fx][fy].equals(model.board[x][y])) {
                 model.score += 10;
                 view.scoreLabel.setText("Score: " + model.score);
+                // Kiểm tra nếu người chơi đã thắng
+                if (model.isGameFinished()) {
+                    timer.stop(); // Dừng đồng hồ
+                    model.isGameOver = true;
+                    view.showWinMessage(model.score); // Truyền điểm số từ model khi thắng
+                    System.exit(0);
+                }
             } else {
                 Timer hideTimer = new Timer(500, e -> {
                     view.hideButtonIcon(view.buttons[fx][fy]);
@@ -65,8 +72,12 @@ public class Controller {
     }
 
     private void gameOver() {
-        model.isGameOver = true;
-        JOptionPane.showMessageDialog(view, "Game Over!\nYour Score: " + model.score);
-        System.exit(0);
+        if (model.isGameOver == false)  {
+            view.showGameOverMessage(model.score);  // Truyền điểm số từ model
+            System.exit(0);
+        } else {
+            view.showWinMessage(model.score); // Truyền điểm số từ model khi thắng
+            System.exit(0);
+        }
     }
 }
